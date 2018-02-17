@@ -1,0 +1,11 @@
+local/
+src/Windows*/.vs/
+src/Windows*/Debug/
+src/Windows*/Release/
+example/Plugins/
+
+*.VC.db
+*.byc
+*.dll
+*.exe
+*.opendb

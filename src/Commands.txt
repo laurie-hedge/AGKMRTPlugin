@@ -1,0 +1,7 @@
+#CommandName,ReturnType,ParameterTypes,Windows,Linux,Mac,Android,iOS,Windows64
+ClearRenderImages,I,0,MRT_ClearRenderImages,MRT_ClearRenderImages,MRT_ClearRenderImages,0,0,MRT_ClearRenderImages
+GetMaxRenderImages,I,0,MRT_GetMaxRenderImages,MRT_GetMaxRenderImages,MRT_GetMaxRenderImages,0,0,MRT_GetMaxRenderImages
+IsSupportedMRT,I,0,MRT_IsSupportedMRT,MRT_IsSupportedMRT,MRT_IsSupportedMRT,0,0,MRT_IsSupportedMRT
+SetErrorMode,0,I,MRT_SetErrorMode,MRT_SetErrorMode,MRT_SetErrorMode,0,0,MRT_SetErrorMode
+SetRenderImage,0,II,MRT_SetRenderImage,MRT_SetRenderImage,MRT_SetRenderImage,0,0,MRT_SetRenderImage
+SetRenderToMRT,0,0,MRT_SetRenderToMRT,MRT_SetRenderToMRT,MRT_SetRenderToMRT,0,0,MRT_SetRenderToMRT

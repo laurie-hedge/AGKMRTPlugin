@@ -7,16 +7,26 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		4A056DAE1EAA362000BA02F2 /* ExamplePlugin.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4A056DAD1EAA362000BA02F2 /* ExamplePlugin.cpp */; };
-		4A056DB01EAA365200BA02F2 /* AGKLibraryCommands.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4A056DAF1EAA365200BA02F2 /* AGKLibraryCommands.cpp */; };
-		4A056DB31EAA366600BA02F2 /* AGKLibraryCommands.h in Headers */ = {isa = PBXBuildFile; fileRef = 4A056DB21EAA366600BA02F2 /* AGKLibraryCommands.h */; };
+		5BC96B8C20386A5D00E51EEF /* OpenGL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5BC96B8B20386A5D00E51EEF /* OpenGL.framework */; };
+		5BF2FFCD203861B9004B47AA /* cImage.h in Headers */ = {isa = PBXBuildFile; fileRef = 5BF2FFC8203861B8004B47AA /* cImage.h */; };
+		5BF2FFCE203861B9004B47AA /* cHashedList.h in Headers */ = {isa = PBXBuildFile; fileRef = 5BF2FFC9203861B8004B47AA /* cHashedList.h */; };
+		5BF2FFCF203861B9004B47AA /* glext.h in Headers */ = {isa = PBXBuildFile; fileRef = 5BF2FFCA203861B8004B47AA /* glext.h */; };
+		5BF2FFD0203861B9004B47AA /* AGKLibraryCommands.h in Headers */ = {isa = PBXBuildFile; fileRef = 5BF2FFCB203861B8004B47AA /* AGKLibraryCommands.h */; };
+		5BF2FFD1203861B9004B47AA /* uString.h in Headers */ = {isa = PBXBuildFile; fileRef = 5BF2FFCC203861B9004B47AA /* uString.h */; };
+		5BF2FFD4203861C6004B47AA /* AGKLibraryCommands.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5BF2FFD2203861C6004B47AA /* AGKLibraryCommands.cpp */; };
+		5BF2FFD5203861C6004B47AA /* MRTPlugin.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5BF2FFD3203861C6004B47AA /* MRTPlugin.cpp */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		4A056DA51EAA354D00BA02F2 /* ExamplePlugin.dylib */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.dylib"; includeInIndex = 0; path = ExamplePlugin.dylib; sourceTree = BUILT_PRODUCTS_DIR; };
-		4A056DAD1EAA362000BA02F2 /* ExamplePlugin.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ExamplePlugin.cpp; sourceTree = "<group>"; };
-		4A056DAF1EAA365200BA02F2 /* AGKLibraryCommands.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ../AGKLibraryCommands.cpp; sourceTree = "<group>"; };
-		4A056DB21EAA366600BA02F2 /* AGKLibraryCommands.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ../AGKLibraryCommands.h; sourceTree = "<group>"; };
+		4A056DA51EAA354D00BA02F2 /* MRTPlugin.dylib */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.dylib"; includeInIndex = 0; path = MRTPlugin.dylib; sourceTree = BUILT_PRODUCTS_DIR; };
+		5BC96B8B20386A5D00E51EEF /* OpenGL.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGL.framework; path = System/Library/Frameworks/OpenGL.framework; sourceTree = SDKROOT; };
+		5BF2FFC8203861B8004B47AA /* cImage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = cImage.h; path = ../include/cImage.h; sourceTree = "<group>"; };
+		5BF2FFC9203861B8004B47AA /* cHashedList.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = cHashedList.h; path = ../include/cHashedList.h; sourceTree = "<group>"; };
+		5BF2FFCA203861B8004B47AA /* glext.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = glext.h; path = ../include/glext.h; sourceTree = "<group>"; };
+		5BF2FFCB203861B8004B47AA /* AGKLibraryCommands.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AGKLibraryCommands.h; path = ../include/AGKLibraryCommands.h; sourceTree = "<group>"; };
+		5BF2FFCC203861B9004B47AA /* uString.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = uString.h; path = ../include/uString.h; sourceTree = "<group>"; };
+		5BF2FFD2203861C6004B47AA /* AGKLibraryCommands.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = AGKLibraryCommands.cpp; path = ../common/AGKLibraryCommands.cpp; sourceTree = "<group>"; };
+		5BF2FFD3203861C6004B47AA /* MRTPlugin.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = MRTPlugin.cpp; path = ../common/MRTPlugin.cpp; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -24,6 +34,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5BC96B8C20386A5D00E51EEF /* OpenGL.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -36,13 +47,14 @@
 				4A056DB11EAA365900BA02F2 /* Header */,
 				4A056DAC1EAA360400BA02F2 /* Source */,
 				4A056DA61EAA354D00BA02F2 /* Products */,
+				5BC96B8A20386A5D00E51EEF /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
 		4A056DA61EAA354D00BA02F2 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				4A056DA51EAA354D00BA02F2 /* ExamplePlugin.dylib */,
+				4A056DA51EAA354D00BA02F2 /* MRTPlugin.dylib */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -50,8 +62,8 @@
 		4A056DAC1EAA360400BA02F2 /* Source */ = {
 			isa = PBXGroup;
 			children = (
-				4A056DAF1EAA365200BA02F2 /* AGKLibraryCommands.cpp */,
-				4A056DAD1EAA362000BA02F2 /* ExamplePlugin.cpp */,
+				5BF2FFD2203861C6004B47AA /* AGKLibraryCommands.cpp */,
+				5BF2FFD3203861C6004B47AA /* MRTPlugin.cpp */,
 			);
 			name = Source;
 			sourceTree = "<group>";
@@ -59,9 +71,21 @@
 		4A056DB11EAA365900BA02F2 /* Header */ = {
 			isa = PBXGroup;
 			children = (
-				4A056DB21EAA366600BA02F2 /* AGKLibraryCommands.h */,
+				5BF2FFCB203861B8004B47AA /* AGKLibraryCommands.h */,
+				5BF2FFC9203861B8004B47AA /* cHashedList.h */,
+				5BF2FFC8203861B8004B47AA /* cImage.h */,
+				5BF2FFCA203861B8004B47AA /* glext.h */,
+				5BF2FFCC203861B9004B47AA /* uString.h */,
 			);
 			name = Header;
+			sourceTree = "<group>";
+		};
+		5BC96B8A20386A5D00E51EEF /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				5BC96B8B20386A5D00E51EEF /* OpenGL.framework */,
+			);
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -71,16 +95,20 @@
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				4A056DB31EAA366600BA02F2 /* AGKLibraryCommands.h in Headers */,
+				5BF2FFD0203861B9004B47AA /* AGKLibraryCommands.h in Headers */,
+				5BF2FFD1203861B9004B47AA /* uString.h in Headers */,
+				5BF2FFCF203861B9004B47AA /* glext.h in Headers */,
+				5BF2FFCD203861B9004B47AA /* cImage.h in Headers */,
+				5BF2FFCE203861B9004B47AA /* cHashedList.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXHeadersBuildPhase section */
 
 /* Begin PBXNativeTarget section */
-		4A056DA41EAA354D00BA02F2 /* ExamplePlugin */ = {
+		4A056DA41EAA354D00BA02F2 /* MRTPlugin */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 4A056DA91EAA354D00BA02F2 /* Build configuration list for PBXNativeTarget "ExamplePlugin" */;
+			buildConfigurationList = 4A056DA91EAA354D00BA02F2 /* Build configuration list for PBXNativeTarget "MRTPlugin" */;
 			buildPhases = (
 				4A056DA11EAA354D00BA02F2 /* Sources */,
 				4A056DA21EAA354D00BA02F2 /* Frameworks */,
@@ -90,9 +118,9 @@
 			);
 			dependencies = (
 			);
-			name = ExamplePlugin;
+			name = MRTPlugin;
 			productName = ExamplePlugin;
-			productReference = 4A056DA51EAA354D00BA02F2 /* ExamplePlugin.dylib */;
+			productReference = 4A056DA51EAA354D00BA02F2 /* MRTPlugin.dylib */;
 			productType = "com.apple.product-type.library.dynamic";
 		};
 /* End PBXNativeTarget section */
@@ -102,14 +130,14 @@
 			isa = PBXProject;
 			attributes = {
 				LastUpgradeCheck = 0730;
-				ORGANIZATIONNAME = "The Game Creators";
+				ORGANIZATIONNAME = "";
 				TargetAttributes = {
 					4A056DA41EAA354D00BA02F2 = {
 						CreatedOnToolsVersion = 7.3.1;
 					};
 				};
 			};
-			buildConfigurationList = 4A056DA01EAA354D00BA02F2 /* Build configuration list for PBXProject "ExamplePlugin" */;
+			buildConfigurationList = 4A056DA01EAA354D00BA02F2 /* Build configuration list for PBXProject "MRTPlugin" */;
 			compatibilityVersion = "Xcode 3.2";
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
@@ -121,7 +149,7 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				4A056DA41EAA354D00BA02F2 /* ExamplePlugin */,
+				4A056DA41EAA354D00BA02F2 /* MRTPlugin */,
 			);
 		};
 /* End PBXProject section */
@@ -131,8 +159,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				4A056DAE1EAA362000BA02F2 /* ExamplePlugin.cpp in Sources */,
-				4A056DB01EAA365200BA02F2 /* AGKLibraryCommands.cpp in Sources */,
+				5BF2FFD5203861C6004B47AA /* MRTPlugin.cpp in Sources */,
+				5BF2FFD4203861C6004B47AA /* AGKLibraryCommands.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -176,6 +204,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
+				HEADER_SEARCH_PATHS = "";
 				MACOSX_DEPLOYMENT_TARGET = 10.11;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -214,6 +243,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
+				HEADER_SEARCH_PATHS = "";
 				MACOSX_DEPLOYMENT_TARGET = 10.11;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = macosx;
@@ -243,7 +273,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		4A056DA01EAA354D00BA02F2 /* Build configuration list for PBXProject "ExamplePlugin" */ = {
+		4A056DA01EAA354D00BA02F2 /* Build configuration list for PBXProject "MRTPlugin" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				4A056DA71EAA354D00BA02F2 /* Debug */,
@@ -252,7 +282,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		4A056DA91EAA354D00BA02F2 /* Build configuration list for PBXNativeTarget "ExamplePlugin" */ = {
+		4A056DA91EAA354D00BA02F2 /* Build configuration list for PBXNativeTarget "MRTPlugin" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				4A056DAA1EAA354D00BA02F2 /* Debug */,

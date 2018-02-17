@@ -2,7 +2,13 @@
 #ifndef _H_AGK_HLIST_
 #define _H_AGK_HLIST_
 
+#include <cstring>
+
 #define UNDEF 0
+
+#ifndef UINT
+#define UINT unsigned int
+#endif
 
 // Namespace
 namespace AGK

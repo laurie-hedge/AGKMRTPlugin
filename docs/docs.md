@@ -24,7 +24,11 @@ this would typically be something like:
 
 ### macOS ###
 
-TODO: complete
+Copy the MRT folder alongside this file into the AppGameKit plugins folder. If you installed AppGameKit through Steam, the app file would typically be located somewhere like:
+> /Users/<username>/Library/Application Support/Steam/steamapps/common/App Game Kit 2
+
+Once you've found the AppGameKit.app file, right click and select Show Package Contents to open is as a folder. Inside, the plugins folder is located at:
+> Contents/Resources/share/application/Plugins
 
 ### Linux ###
 
@@ -79,6 +83,8 @@ MRT.SetRenderToMRT()
 ClearScreen()
 Render()
 ```
+
+For a full example application, see the example folder alongside this file.
 
 ## Commands ##
 

@@ -1,7 +1,14 @@
 #include <cstdio>
+#include <cstdarg>
+#include <cstdlib>
+#if defined(WIN32)
+#define WINDOWS_LEAN_AND_MEAN
 #include <Windows.h>
-#include <gl/GL.h>
+#include <GL/gl.h>
 #include "glext.h"
+#elif defined(__APPLE__)
+#include <OpenGL/gl3.h>
+#endif
 #include "cImage.h"
 #include "AGKLibraryCommands.h"
 
@@ -18,9 +25,11 @@ enum PluginState {
 	PLUGIN_STATE_UNSUPPORTED
 };
 
+#ifdef WIN32
 PFNGLFRAMEBUFFERTEXTUREPROC glFramebufferTexture;
 PFNGLDRAWBUFFERSPROC glDrawBuffers;
 PFNGLCHECKFRAMEBUFFERSTATUSPROC glCheckFramebufferStatus;
+#endif
 
 ErrorMode errorMode = ERROR_MODE_REPORT_FIRST;
 PluginState pluginState = PLUGIN_STATE_UNINITIALISED;
@@ -72,51 +81,45 @@ void UnattachAllTextures()
 bool CheckInit()
 {
 	switch (pluginState) {
-	case PLUGIN_STATE_UNINITIALISED: {
-		GLint majorVersion = 0, minorVersion = 0;
-		glGetIntegerv(GL_MAJOR_VERSION, &majorVersion);
-		glGetIntegerv(GL_MINOR_VERSION, &minorVersion);
-		if (majorVersion < 3 || (3 == majorVersion && minorVersion < 2)) {
-			pluginState = PLUGIN_STATE_UNSUPPORTED;
+		case PLUGIN_STATE_UNINITIALISED: {
+#ifdef WIN32
+			glFramebufferTexture = (PFNGLFRAMEBUFFERTEXTUREPROC)wglGetProcAddress("glFramebufferTexture");
+			glDrawBuffers = (PFNGLDRAWBUFFERSPROC)wglGetProcAddress("glDrawBuffers");
+			glCheckFramebufferStatus = (PFNGLCHECKFRAMEBUFFERSTATUSPROC)wglGetProcAddress("glCheckFramebufferStatus");
+			if (!glFramebufferTexture || !glDrawBuffers || !glCheckFramebufferStatus) {
+				pluginState = PLUGIN_STATE_UNSUPPORTED;
+				return false;
+			}
+#endif
+
+			GLint maxColourAttachments = 0, maxDrawBuffers = 0;
+			glGetIntegerv(GL_MAX_COLOR_ATTACHMENTS, &maxColourAttachments);
+			glGetIntegerv(GL_MAX_DRAW_BUFFERS, &maxDrawBuffers);
+			maxRenderTargets = (unsigned int)(maxColourAttachments < maxDrawBuffers ? maxColourAttachments : maxDrawBuffers);
+			if (maxRenderTargets < 2) {
+				pluginState = PLUGIN_STATE_UNSUPPORTED;
+				return false;
+			}
+
+			attachPoints = new GLenum[maxRenderTargets];
+			renderImages = new unsigned int[maxRenderTargets];
+
+			for (unsigned int i = 0; i < maxRenderTargets; ++i) {
+				attachPoints[i] = GL_NONE;
+			}
+			numAttachmentsActive = 0;
+
+			pluginState = PLUGIN_STATE_READY;
+			errorReported = false;
+
+			return true;
+		}
+
+		case PLUGIN_STATE_READY:
+			return true;
+
+		case PLUGIN_STATE_UNSUPPORTED:
 			return false;
-		}
-
-		glFramebufferTexture = (PFNGLFRAMEBUFFERTEXTUREPROC)wglGetProcAddress("glFramebufferTexture");
-		glDrawBuffers = (PFNGLDRAWBUFFERSPROC)wglGetProcAddress("glDrawBuffers");
-		glCheckFramebufferStatus = (PFNGLCHECKFRAMEBUFFERSTATUSPROC)wglGetProcAddress("glCheckFramebufferStatus");
-		if (!glFramebufferTexture || !glDrawBuffers || !glCheckFramebufferStatus) {
-			pluginState = PLUGIN_STATE_UNSUPPORTED;
-			return false;
-		}
-
-		GLint maxColourAttachments = 0, maxDrawBuffers = 0;
-		glGetIntegerv(GL_MAX_COLOR_ATTACHMENTS, &maxColourAttachments);
-		glGetIntegerv(GL_MAX_DRAW_BUFFERS, &maxDrawBuffers);
-		maxRenderTargets = (unsigned int)(maxColourAttachments < maxDrawBuffers ? maxColourAttachments : maxDrawBuffers);
-		if (maxRenderTargets < 2) {
-			pluginState = PLUGIN_STATE_UNSUPPORTED;
-			return false;
-		}
-
-		attachPoints = new GLenum[maxRenderTargets];
-		renderImages = new unsigned int[maxRenderTargets];
-
-		for (unsigned int i = 0; i < maxRenderTargets; ++i) {
-			attachPoints[i] = GL_NONE;
-		}
-		numAttachmentsActive = 0;
-
-		pluginState = PLUGIN_STATE_READY;
-		errorReported = false;
-
-		return true;
-	}
-
-	case PLUGIN_STATE_READY:
-		return true;
-
-	case PLUGIN_STATE_UNSUPPORTED:
-		return false;
 	}
 
 	return false;
@@ -209,7 +212,7 @@ extern "C"
 		}
 
 		unsigned int firstImage = 0;
-		unsigned int renderWidth, renderHeight;
+		unsigned int renderWidth = 0, renderHeight = 0;
 
 		for (unsigned int i = 0; i < numAttachmentsActive; ++i) {
 			if (GL_NONE != attachPoints[i]) {

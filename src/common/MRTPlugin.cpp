@@ -28,7 +28,7 @@ enum PluginState {
 };
 
 #ifdef WIN32
-PFNGLFRAMEBUFFERTEXTUREPROC glFramebufferTexture;
+PFNGLFRAMEBUFFERTEXTURE2DPROC glFramebufferTexture2D;
 PFNGLDRAWBUFFERSPROC glDrawBuffers;
 PFNGLCHECKFRAMEBUFFERSTATUSPROC glCheckFramebufferStatus;
 #endif
@@ -75,7 +75,7 @@ void UnattachAllTextures()
 {
 	for (unsigned int i = 0; i < numAttachmentsActive; ++i) {
 		if (GL_NONE != attachPoints[i]) {
-			glFramebufferTexture(GL_FRAMEBUFFER, attachPoints[i], 0, 0);
+			glFramebufferTexture2D(GL_FRAMEBUFFER, attachPoints[i], GL_TEXTURE_2D, 0, 0);
 		}
 	}
 }
@@ -85,10 +85,10 @@ bool CheckInit()
 	switch (pluginState) {
 		case PLUGIN_STATE_UNINITIALISED: {
 #if defined(WIN32)
-			glFramebufferTexture = (PFNGLFRAMEBUFFERTEXTUREPROC)wglGetProcAddress("glFramebufferTexture");
+			glFramebufferTexture2D = (PFNGLFRAMEBUFFERTEXTURE2DPROC)wglGetProcAddress("glFramebufferTexture2D");
 			glDrawBuffers = (PFNGLDRAWBUFFERSPROC)wglGetProcAddress("glDrawBuffers");
 			glCheckFramebufferStatus = (PFNGLCHECKFRAMEBUFFERSTATUSPROC)wglGetProcAddress("glCheckFramebufferStatus");
-			if (!glFramebufferTexture || !glDrawBuffers || !glCheckFramebufferStatus) {
+			if (!glFramebufferTexture2D || !glDrawBuffers || !glCheckFramebufferStatus) {
 				pluginState = PLUGIN_STATE_UNSUPPORTED;
 				return false;
 			}
@@ -248,7 +248,7 @@ extern "C"
 				}
 
 				if (needsAttachment) {
-					glFramebufferTexture(GL_FRAMEBUFFER, attachPoints[i], image->m_iTextureID, 0);
+					glFramebufferTexture2D(GL_FRAMEBUFFER, attachPoints[i], GL_TEXTURE_2D, image->m_iTextureID, 0);
 					switch (glGetError()) {
 						case GL_INVALID_ENUM:
 						case GL_INVALID_OPERATION: {

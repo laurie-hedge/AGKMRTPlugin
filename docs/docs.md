@@ -24,15 +24,19 @@ this would typically be something like:
 
 ### macOS ###
 
-Copy the MRT folder alongside this file into the AppGameKit plugins folder. If you installed AppGameKit through Steam, the app file would typically be located somewhere like:
+Copy the MRT folder alongside this file into the AppGameKit plugins folder. If you installed AppGameKit through Steam,
+the app file would typically be located somewhere like:
 > /Users/<username>/Library/Application Support/Steam/steamapps/common/App Game Kit 2
 
-Once you've found the AppGameKit.app file, right click and select Show Package Contents to open is as a folder. Inside, the plugins folder is located at:
+Once you've found the AppGameKit.app file, right click and select Show Package Contents to open is as a folder. Inside,
+the plugins folder is located at:
 > Contents/Resources/share/application/Plugins
 
 ### Linux ###
 
-TODO: complete
+Copy the MRT folder alongside this file into the AppGameKit plugins folder. If you installed AppGameKit through Steam,
+this would typically be something like:
+> /home/<username>/.steam/steam/steamapps/common/App Game Kit 2/Tier1/Compiler/Plugins
 
 ## Usage ##
 

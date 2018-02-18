@@ -1,2 +1,2 @@
 all: 
-	g++ -fvisibility=hidden -fpic -shared -o ExamplePlugin.so ExamplePlugin.cpp ../AGKLibraryCommands.cpp
+	g++ -fvisibility=hidden -fpic -shared -o MRTPlugin.so ../common/MRTPlugin.cpp ../common/AGKLibraryCommands.cpp -I../include -lGL -lGLEW

@@ -8,6 +8,8 @@
 #include "glext.h"
 #elif defined(__APPLE__)
 #include <OpenGL/gl3.h>
+#elif defined(__linux__)
+#include <GL/glew.h>
 #endif
 #include "cImage.h"
 #include "AGKLibraryCommands.h"
@@ -82,11 +84,16 @@ bool CheckInit()
 {
 	switch (pluginState) {
 		case PLUGIN_STATE_UNINITIALISED: {
-#ifdef WIN32
+#if defined(WIN32)
 			glFramebufferTexture = (PFNGLFRAMEBUFFERTEXTUREPROC)wglGetProcAddress("glFramebufferTexture");
 			glDrawBuffers = (PFNGLDRAWBUFFERSPROC)wglGetProcAddress("glDrawBuffers");
 			glCheckFramebufferStatus = (PFNGLCHECKFRAMEBUFFERSTATUSPROC)wglGetProcAddress("glCheckFramebufferStatus");
 			if (!glFramebufferTexture || !glDrawBuffers || !glCheckFramebufferStatus) {
+				pluginState = PLUGIN_STATE_UNSUPPORTED;
+				return false;
+			}
+#elif defined(__linux__)
+			if (GLEW_OK != glewInit()) {
 				pluginState = PLUGIN_STATE_UNSUPPORTED;
 				return false;
 			}

@@ -56,7 +56,7 @@ void PluginError(char const *format, ...)
 		errorReported = true;
 	}
 
-	char *str = agk::CreateString(512);
+	char str[512];
 
 	va_list args;
 	va_start(args, format);
